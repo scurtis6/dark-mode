@@ -9,6 +9,13 @@ export const useLocalStorage = (key, initialValue) => {
         // parse and return stored json or, if undefined, return initialValue
         return item ? JSON.parse(item) : initialValue;
     });
+
+    const setValue = value => {
+        // save state
+        setStoredValue(value);
+        // save to local storage
+        window.localStorage.setItem(key, JSON.stringify(value));
+    };
     return [storedValue];
 }
 
